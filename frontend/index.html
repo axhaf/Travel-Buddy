@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buddy Find | Find Your Travel Partner</title>
+
+    <meta
+        name="description"
+        content="Buddy Find helps students discover travel partners, coordinate journeys, and share transportation costs."
+    >
+
+    <meta name="theme-color" content="#0E3B2C">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="index-style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main navigation">
+
+            <a href="index.html" class="logo">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" width="32" height="32">
+                        <circle cx="16" cy="16" r="16" fill="currentColor"/>
+                        <circle cx="10" cy="20" r="3" fill="#0E3B2C"/>
+                        <circle cx="22" cy="12" r="3" fill="#0E3B2C"/>
+                        <path d="M10 20 C 14 20, 18 12, 22 12" stroke="#0E3B2C" stroke-width="2" fill="none" stroke-dasharray="2 2.5"/>
+                    </svg>
+                </span>
+                <h1 id="welcomeUser">Buddy Find</h1>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="find-buddy.html">Find Buddy</a>
+                <a href="#travelForm">Post a Trip</a>
+                <a href="login.html" class="nav-cta">Login / Register</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-inner container">
+
+                <div class="hero-copy">
+                    <h2 id="FYT">Your journey, better together.</h2>
+
+                    <p class="hero-lead">
+                        Post your trip, find students heading the same way,
+                        and split the auto, cab or train fare.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#travelForm" class="btn btn-primary">Post a trip</a>
+                        <a href="find-buddy.html" class="btn btn-ghost">Browse buddies</a>
+                    </div>
+                </div>
+
+                <!-- Decorative route illustration -->
+                <div class="hero-route" aria-hidden="true">
+                    <svg viewBox="0 0 420 360" class="route-svg">
+                        <path
+                            class="route-track"
+                            d="M60 70 C 200 40, 120 180, 230 190 S 330 250, 360 300"
+                        />
+                        <path
+                            class="route-line"
+                            d="M60 70 C 200 40, 120 180, 230 190 S 330 250, 360 300"
+                        />
+
+                        <!-- Start stop -->
+                        <circle cx="60" cy="70" r="11" class="stop stop-end"/>
+                        <circle cx="60" cy="70" r="4" class="stop-core"/>
+                        <text x="40" y="40" class="stop-label">Chennai</text>
+
+                        <!-- Mid stops -->
+                        <circle cx="168" cy="118" r="6" class="stop stop-mid"/>
+                        <circle cx="230" cy="190" r="6" class="stop stop-mid"/>
+                        <text x="248" y="184" class="stop-sub">+2 buddies join</text>
+
+                        <!-- End stop -->
+                        <circle cx="360" cy="300" r="11" class="stop stop-end"/>
+                        <circle cx="360" cy="300" r="4" class="stop-core"/>
+                        <text x="314" y="336" class="stop-label">SRM</text>
+                    </svg>
+
+                    <div class="fare-chip">
+                        <span class="fare-old">₹480</span>
+                        <span class="fare-new">₹160 each</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Trip Search Section -->
+        <section class="trip-section container" aria-labelledby="searchHeading">
+
+            <div class="ticket">
+
+                <!-- Ticket stub -->
+                <div class="ticket-stub">
+                    <h2 id="searchHeading">Plan your journey</h2>
+
+                    <p>
+                        Enter your travel details to discover students
+                        with similar travel plans.
+                    </p>
+                </div>
+
+                <!-- Ticket body -->
+                <form id="travelForm" class="ticket-body">
+
+                    <div class="route-fields">
+
+                        <!-- Starting Location -->
+                        <div class="form-group">
+                            <label for="from">Starting location</label>
+                            <input
+                                type="text"
+                                id="from"
+                                name="from"
+                                placeholder="e.g. Chennai"
+                                autocomplete="address-level2"
+                                required
+                            >
+                        </div>
+
+                        <span class="route-connector" aria-hidden="true"></span>
+
+                        <!-- Destination -->
+                        <div class="form-group">
+                            <label for="to">Destination</label>
+                            <input
+                                type="text"
+                                id="to"
+                                name="to"
+                                placeholder="e.g. SRM"
+                                autocomplete="off"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="time-fields">
+
+                        <!-- Travel Date -->
+                        <div class="form-group">
+                            <label for="date">Travel date</label>
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                required
+                            >
+                        </div>
+
+                        <!-- Travel Time -->
+                        <div class="form-group">
+                            <label for="time">Departure time</label>
+                            <input
+                                type="time"
+                                id="time"
+                                name="time"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <!-- Transport Selection -->
+                    <fieldset class="transport-group">
+
+                        <legend>Preferred transport</legend>
+
+                        <div class="transport-options">
+
+                            <label class="transport-option" for="auto">
+                                <input type="radio" id="auto" name="transport" value="auto">
+                                <span class="option-body">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M3 16V10a5 5 0 0 1 5-5h6l4 5h1.5A1.5 1.5 0 0 1 21 11.5V16"/>
+                                        <path d="M8 5v5h10"/>
+                                        <circle cx="6.5" cy="17" r="2"/>
+                                        <circle cx="17.5" cy="17" r="2"/>
+                                    </svg>
+                                    <span>Auto</span>
+                                </span>
+                            </label>
+
+                            <label class="transport-option" for="cab">
+                                <input type="radio" id="cab" name="transport" value="cab">
+                                <span class="option-body">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M4.5 17H3v-4.5L5 8h14l2 4.5V17h-1.5"/>
+                                        <path d="M3 12.5h18"/>
+                                        <path d="M10 8V6h4v2"/>
+                                        <circle cx="7.5" cy="17" r="2"/>
+                                        <circle cx="16.5" cy="17" r="2"/>
+                                    </svg>
+                                    <span>Cab</span>
+                                </span>
+                            </label>
+
+                            <label class="transport-option" for="train">
+                                <input type="radio" id="train" name="transport" value="train">
+                                <span class="option-body">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="6" y="3" width="12" height="13" rx="3"/>
+                                        <path d="M6 10h12"/>
+                                        <path d="M9 20l1.5-4M15 20l-1.5-4"/>
+                                        <circle cx="9.5" cy="13" r=".6"/>
+                                        <circle cx="14.5" cy="13" r=".6"/>
+                                    </svg>
+                                    <span>Train</span>
+                                </span>
+                            </label>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <!-- Submit -->
+                    <button id="findBuddyBtn" type="submit" class="btn btn-submit">
+                        Find travel buddies
+                    </button>
+
+                </form>
+            </div>
+
+        </section>
+
+
+        <!-- How it works -->
+        <section class="steps container" aria-labelledby="stepsHeading">
+
+            <h2 id="stepsHeading">How it works</h2>
+
+            <ol class="steps-list">
+                <li>
+                    <span class="step-num" aria-hidden="true">1</span>
+                    <h3>Post your trip</h3>
+                    <p>Tell us where you're going, when, and how you'd like to travel.</p>
+                </li>
+                <li>
+                    <span class="step-num" aria-hidden="true">2</span>
+                    <h3>Match with students</h3>
+                    <p>See others on the same route around the same time.</p>
+                </li>
+                <li>
+                    <span class="step-num" aria-hidden="true">3</span>
+                    <h3>Ride and split the fare</h3>
+                    <p>Meet up, travel together, and share the cost.</p>
+                </li>
+            </ol>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Buddy Find</p>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="find-buddy.html">Find Buddy</a>
+                <a href="#travelForm">Post a Trip</a>
+                <a href="login.html">Login</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,644 @@
+/* =========================================================
+   BUDDY FIND  |  FIND BUDDY PAGE
+   Design system: forest green / yellow / cream
+   ========================================================= */
+
+:root {
+    --green: #0E3B2C;
+    --green-dark: #0A2C21;
+    --green-soft: #1B5440;
+    --yellow: #F7C82B;
+    --yellow-dark: #E0B217;
+    --cream: #F2F5F1;
+    --white: #FFFFFF;
+
+    --text: #16241E;
+    --text-muted: #5B6B63;
+    --border: #DDE5DF;
+
+    --danger: #B3372B;
+    --danger-bg: #FBEAE8;
+
+    --radius-sm: 10px;
+    --radius: 18px;
+    --radius-pill: 999px;
+
+    --shadow-sm: 0 2px 8px rgba(14, 59, 44, 0.06);
+    --shadow: 0 8px 24px rgba(14, 59, 44, 0.10);
+    --shadow-lg: 0 14px 32px rgba(14, 59, 44, 0.16);
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+
+    --font: "Inter", "Segoe UI", system-ui, -apple-system, Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Reset / base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Keep the HTML hidden attribute working despite display rules */
+[hidden] {
+    display: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    line-height: 1.2;
+    color: var(--green);
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--green);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+}
+
+.site-nav {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0.9rem var(--space-3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.logo h1 {
+    color: var(--yellow);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius-pill);
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-links a[aria-current="page"] {
+    background: var(--yellow);
+    color: var(--green);
+}
+
+.nav-links a.nav-cta {
+    border: 2px solid var(--yellow);
+    color: var(--yellow);
+}
+
+.nav-links a.nav-cta:hover {
+    background: var(--yellow);
+    color: var(--green);
+}
+
+/* ---------- Layout ---------- */
+
+.find-buddy-container {
+    flex: 1;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-3) var(--space-5);
+}
+
+.page-intro {
+    margin-bottom: var(--space-3);
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    padding: 0.25rem 0.8rem;
+    background: var(--yellow);
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: var(--radius-pill);
+}
+
+.page-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* ---------- Current trip ---------- */
+
+.trip-info-section {
+    position: relative;
+    margin-bottom: var(--space-4);
+    padding: var(--space-3);
+    background: var(--green);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.trip-info-section::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    width: 180px;
+    height: 180px;
+    background: var(--yellow);
+    opacity: 0.12;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.trip-info-section h2 {
+    color: var(--yellow);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-2);
+}
+
+#tripInfo {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.75rem;
+}
+
+#tripInfo p {
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    color: var(--cream);
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+#tripInfo p strong {
+    display: block;
+    margin-bottom: 0.1rem;
+    color: var(--yellow);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Fallback messages (no trip found) span the whole grid */
+#tripInfo p:only-child,
+#tripInfo p:first-child:nth-last-child(2),
+#tripInfo p:first-child:nth-last-child(2) + p {
+    grid-column: 1 / -1;
+}
+
+/* ---------- Tabs ---------- */
+
+.request-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: var(--space-3);
+    padding: 0.4rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-sm);
+}
+
+.request-tabs button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--green);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.request-tabs button:hover {
+    background: var(--cream);
+}
+
+.request-tabs button.active-tab {
+    background: var(--yellow);
+    color: var(--green);
+    box-shadow: 0 3px 10px rgba(247, 200, 43, 0.5);
+}
+
+/* ---------- Panels ---------- */
+
+.tab-panel {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-heading {
+    margin-bottom: var(--space-3);
+}
+
+.panel-heading h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.panel-heading p {
+    color: var(--text-muted);
+    max-width: 60ch;
+}
+
+/* Loading / plain-text messages generated by JS */
+#results > p,
+#incomingRequests > p,
+#connectionsList > p {
+    padding: var(--space-2) var(--space-3);
+    background: var(--white);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ---------- Card grids ---------- */
+
+#results,
+#incomingRequests,
+#connectionsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-3);
+    align-items: start;
+}
+
+/* Full-width messages inside grids */
+#results > .empty-state,
+#results > p,
+#incomingRequests > .empty-state,
+#incomingRequests > p,
+#connectionsList > .empty-state,
+#connectionsList > p {
+    grid-column: 1 / -1;
+}
+
+/* ---------- Buddy cards ---------- */
+
+.buddy-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    height: 100%;
+    padding: var(--space-3);
+    padding-top: calc(var(--space-3) + 6px);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.buddy-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--yellow);
+}
+
+.buddy-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.buddy-card h3 {
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 1.2rem;
+    overflow-wrap: anywhere;
+}
+
+.buddy-card p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.buddy-card p strong {
+    min-width: 5.5rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.9;
+}
+
+/* ---------- Buttons ---------- */
+
+.connect-btn,
+.accept-btn,
+.reject-btn {
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: var(--radius-pill);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s,
+                box-shadow 0.2s, border-color 0.2s;
+}
+
+.connect-btn:active,
+.accept-btn:active,
+.reject-btn:active {
+    transform: scale(0.97);
+}
+
+.connect-btn {
+    width: 100%;
+    margin-top: auto;
+    background: var(--yellow);
+    color: var(--green);
+}
+
+.buddy-card .connect-btn {
+    margin-top: var(--space-2);
+}
+
+.connect-btn:hover:not(:disabled) {
+    background: var(--yellow-dark);
+    box-shadow: 0 6px 16px rgba(247, 200, 43, 0.45);
+}
+
+.connect-btn:disabled {
+    background: var(--green);
+    color: var(--cream);
+    cursor: default;
+    opacity: 0.85;
+}
+
+.request-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: var(--space-2);
+}
+
+.accept-btn,
+.reject-btn {
+    flex: 1;
+}
+
+.accept-btn {
+    background: var(--green);
+    color: var(--white);
+}
+
+.accept-btn:hover {
+    background: var(--green-soft);
+    box-shadow: 0 6px 16px rgba(14, 59, 44, 0.3);
+}
+
+.reject-btn {
+    background: var(--white);
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.reject-btn:hover {
+    background: var(--danger-bg);
+}
+
+/* ---------- Connection status ---------- */
+
+.buddy-card .connection-status {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: var(--space-1);
+    padding: 0.35rem 0.9rem;
+    background: var(--green);
+    color: var(--yellow);
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+}
+
+.buddy-card .connection-status::before {
+    content: "\2713";
+    font-weight: 800;
+}
+
+/* ---------- Empty states ---------- */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-4) var(--space-3);
+    text-align: center;
+    background: var(--white);
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+}
+
+.empty-state h3 {
+    font-size: 1.2rem;
+}
+
+.empty-state p {
+    max-width: 44ch;
+    color: var(--text-muted);
+}
+
+.empty-state a {
+    display: inline-block;
+    margin-top: var(--space-1);
+    padding: 0.7rem 1.5rem;
+    background: var(--yellow);
+    color: var(--green);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.empty-state a:hover {
+    background: var(--yellow-dark);
+    box-shadow: 0 6px 16px rgba(247, 200, 43, 0.45);
+}
+
+.empty-state.no-match {
+    border-color: var(--yellow);
+    background: #FFFDF3;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+    padding: var(--space-3);
+    text-align: center;
+    background: var(--green);
+    color: var(--cream);
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 860px) {
+    .find-buddy-container {
+        padding: var(--space-3) var(--space-2) var(--space-4);
+    }
+}
+
+@media (max-width: 680px) {
+    .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.8rem var(--space-2);
+    }
+
+    .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.2rem;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        white-space: nowrap;
+        font-size: 0.9rem;
+    }
+
+    .request-tabs {
+        flex-direction: column;
+        border-radius: var(--radius);
+    }
+
+    .request-tabs button {
+        padding: 0.8rem 1rem;
+    }
+
+    .trip-info-section {
+        padding: var(--space-2);
+    }
+
+    #tripInfo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #results,
+    #incomingRequests,
+    #connectionsList {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+    }
+
+    .buddy-card {
+        padding: var(--space-2);
+        padding-top: calc(var(--space-2) + 6px);
+    }
+}
+
+@media (max-width: 400px) {
+    #tripInfo {
+        grid-template-columns: 1fr;
+    }
+
+    .request-actions {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

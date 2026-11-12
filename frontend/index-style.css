@@ -1,0 +1,754 @@
+/* =========================================================
+   Buddy Find — index styles
+   Palette taken from Chennai's yellow-and-green autos
+   ========================================================= */
+
+:root {
+    --green-900: #0E3B2C;
+    --green-800: #134A37;
+    --green-700: #17573F;
+    --yellow: #F7C82B;
+    --yellow-soft: #FFF3C4;
+    --paper: #F2F5F1;
+    --white: #FFFFFF;
+    --ink: #142019;
+    --muted: #56655C;
+    --line: #D5DDD7;
+
+    --font-display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+    --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+
+    --radius-sm: 10px;
+    --radius-lg: 22px;
+    --container: 1120px;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: 24px;
+}
+
+:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    font: 600 1rem/1 var(--font-body);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .2s, color .2s, transform .15s;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background: var(--yellow);
+    color: var(--green-900);
+}
+
+.btn-primary:hover {
+    background: #FFD84F;
+}
+
+.btn-ghost {
+    border-color: rgba(255, 255, 255, .35);
+    color: var(--white);
+}
+
+.btn-ghost:hover {
+    border-color: var(--white);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+    background: var(--green-900);
+    color: var(--white);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 72px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    min-width: 0;
+}
+
+.logo-mark {
+    color: var(--yellow);
+    display: flex;
+    flex-shrink: 0;
+}
+
+.logo h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-links a {
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: .95rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .78);
+    white-space: nowrap;
+    transition: color .2s, background-color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+    color: var(--white);
+}
+
+.nav-links a[aria-current="page"] {
+    background: rgba(255, 255, 255, .1);
+}
+
+.nav-links .nav-cta {
+    margin-left: 8px;
+    background: var(--yellow);
+    color: var(--green-900);
+    font-weight: 600;
+}
+
+.nav-links .nav-cta:hover {
+    color: var(--green-900);
+    background: #FFD84F;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    background: var(--green-900);
+    color: var(--white);
+    padding: 56px 0 150px;
+    overflow: hidden;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero h2 {
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: .98;
+    color: var(--yellow);
+    max-width: 11ch;
+}
+
+.hero-lead {
+    margin-top: 22px;
+    max-width: 42ch;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, .82);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+/* Route illustration */
+
+.hero-route {
+    position: relative;
+}
+
+.route-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+.route-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, .12);
+    stroke-width: 14;
+    stroke-linecap: round;
+}
+
+.route-line {
+    fill: none;
+    stroke: var(--yellow);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 2 10;
+    animation: route-move 1.6s linear infinite;
+}
+
+@keyframes route-move {
+    to { stroke-dashoffset: -24; }
+}
+
+.stop-end {
+    fill: var(--yellow);
+}
+
+.stop-core {
+    fill: var(--green-900);
+}
+
+.stop-mid {
+    fill: var(--green-900);
+    stroke: var(--yellow);
+    stroke-width: 3;
+}
+
+.stop-label {
+    font: 700 22px var(--font-display);
+    fill: var(--white);
+}
+
+.stop-sub {
+    font: 500 14px var(--font-body);
+    fill: rgba(255, 255, 255, .7);
+}
+
+.fare-chip {
+    position: absolute;
+    left: 6%;
+    bottom: 8%;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
+
+.fare-old {
+    color: var(--muted);
+    text-decoration: line-through;
+    font-size: .9rem;
+}
+
+.fare-new {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--green-700);
+}
+
+/* ---------- Ticket (form) ---------- */
+
+.trip-section {
+    margin-top: -100px;
+    position: relative;
+    z-index: 1;
+}
+
+.ticket {
+    --stub: 300px;
+    --notch: 14px;
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--stub) 1fr;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow:
+        0 1px 2px rgba(14, 59, 44, .08),
+        0 24px 60px -20px rgba(14, 59, 44, .35);
+}
+
+/* Perforation notches */
+.ticket::before,
+.ticket::after {
+    content: "";
+    position: absolute;
+    left: calc(var(--stub) - var(--notch));
+    width: calc(var(--notch) * 2);
+    height: calc(var(--notch) * 2);
+    border-radius: 50%;
+    background: var(--paper);
+}
+
+.ticket::before {
+    top: calc(var(--notch) * -1);
+    background: var(--green-900);
+}
+
+.ticket::after {
+    bottom: calc(var(--notch) * -1);
+}
+
+.ticket-stub {
+    background: var(--yellow);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    padding: 40px 32px;
+    border-right: 2px dashed rgba(14, 59, 44, .35);
+}
+
+.ticket-stub h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--green-900);
+}
+
+.ticket-stub p {
+    margin-top: 12px;
+    color: var(--green-800);
+}
+
+.ticket-body {
+    padding: 36px 40px 40px;
+    display: grid;
+    gap: 22px;
+}
+
+/* Fields */
+
+.route-fields {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    align-items: end;
+}
+
+.route-connector {
+    height: 50px;
+    position: relative;
+}
+
+.route-connector::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    top: 50%;
+    border-top: 2px dashed var(--line);
+}
+
+.time-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    display: grid;
+    gap: 6px;
+}
+
+.form-group label,
+.transport-group legend {
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.form-group input {
+    width: 100%;
+    height: 50px;
+    padding: 0 14px;
+    font: 500 1rem var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-sm);
+    color-scheme: light;
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+
+.form-group input::placeholder {
+    color: #8A968F;
+}
+
+.form-group input:hover {
+    border-color: var(--line);
+}
+
+.form-group input:focus {
+    outline: none;
+    background: var(--white);
+    border-color: var(--green-700);
+    box-shadow: 0 0 0 4px rgba(23, 87, 63, .15);
+}
+
+/* Transport */
+
+.transport-group {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.transport-group legend {
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+.transport-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.transport-option {
+    position: relative;
+    cursor: pointer;
+}
+
+.transport-option input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.option-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 8px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    color: var(--muted);
+    transition: border-color .2s, background-color .2s, color .2s;
+}
+
+.option-body svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.transport-option:hover .option-body {
+    border-color: var(--green-700);
+    color: var(--ink);
+}
+
+.transport-option input:checked + .option-body {
+    background: var(--yellow-soft);
+    border-color: var(--green-900);
+    color: var(--green-900);
+    box-shadow: inset 0 0 0 1px var(--green-900);
+}
+
+.transport-option input:focus-visible + .option-body {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+}
+
+/* Submit */
+
+.btn-submit {
+    width: 100%;
+    min-height: 54px;
+    margin-top: 4px;
+    background: var(--green-900);
+    color: var(--white);
+    font-size: 1.05rem;
+}
+
+.btn-submit:hover {
+    background: var(--green-700);
+}
+
+/* ---------- How it works ---------- */
+
+.steps {
+    padding-top: 88px;
+    padding-bottom: 96px;
+}
+
+.steps h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.steps-list {
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    counter-reset: none;
+}
+
+.steps-list li {
+    position: relative;
+    padding-top: 22px;
+    border-top: 2px dashed var(--line);
+}
+
+.step-num {
+    position: absolute;
+    top: -17px;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--green-900);
+    font: 800 .95rem var(--font-display);
+    box-shadow: 0 0 0 6px var(--paper);
+}
+
+.steps-list h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+.steps-list p {
+    margin-top: 6px;
+    color: var(--muted);
+    max-width: 32ch;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+    background: var(--green-900);
+    color: rgba(255, 255, 255, .7);
+    font-size: .9rem;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-route {
+        max-width: 440px;
+        width: 100%;
+        justify-self: center;
+    }
+
+    .ticket {
+        --stub: 240px;
+    }
+
+    .ticket-body {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 720px) {
+    .nav {
+        flex-wrap: wrap;
+        padding-top: 14px;
+        padding-bottom: 10px;
+    }
+
+    .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin-inline: -8px;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-links a {
+        padding: 8px 10px;
+        font-size: .9rem;
+    }
+
+    /* The logo already links home, so free up room on small screens */
+    .nav-links a[aria-current="page"] {
+        display: none;
+    }
+
+    .nav-links .nav-cta {
+        margin-left: auto;
+    }
+
+    .hero {
+        padding: 32px 0 130px;
+    }
+
+    .hero-route {
+        display: none;
+    }
+
+    /* Ticket stacks: stub on top, perforation runs horizontally */
+    .ticket {
+        grid-template-columns: 1fr;
+    }
+
+    .ticket::before,
+    .ticket::after {
+        display: none;
+    }
+
+    .ticket-stub {
+        border-right: 0;
+        border-bottom: 2px dashed rgba(14, 59, 44, .35);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        padding: 28px 22px;
+    }
+
+    .ticket-stub h2 {
+        font-size: 1.6rem;
+    }
+
+    .ticket-body {
+        padding: 24px 20px 28px;
+    }
+
+    .route-fields {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .route-connector {
+        display: none;
+    }
+
+    .steps-list {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding-inline: 16px;
+    }
+
+    .time-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .option-body {
+        padding: 12px 4px;
+        font-size: .9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .route-line {
+        animation: none;
+    }
+
+    .btn {
+        transition: none;
+    }
+}

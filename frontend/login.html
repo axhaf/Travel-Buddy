@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Buddy - Welcome</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Travel Buddy</h1>
+    </header>
+
+    <main>
+
+        <section class="login-container">
+
+            <h2>Welcome to Travel Buddy</h2>
+
+            <p>
+                Enter your details to continue and find travel partners.
+            </p>
+
+            <form id="loginForm">
+
+                <div>
+                    <label for="name">Full Name</label><br>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="phone">Phone Number</label><br>
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        required>
+                </div>
+
+                <br>
+
+<div>
+    <label for="password">Password</label><br>
+    <input
+        type="password"
+        id="password"
+        placeholder="Create a password"
+        minlength="8"
+        required>
+</div>
+
+                <br>
+
+                <button type="submit">
+                    Continue
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>
