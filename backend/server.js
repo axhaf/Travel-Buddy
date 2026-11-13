@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const PORT = process.env.PORT || 3000;
 const authRoutes = require("./routes/authRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const requestRoutes = require("./routes/requestRoutes");
@@ -15,17 +16,16 @@ app.use("/api/requests", requestRoutes);
 
 app.use(express.static(path.join(__dirname, "../frontend")));
 
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../frontend/index.html"));
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
 async function startServer() {
-    await connectDB();
+  await connectDB();
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
-});
+  });
 }
 
 startServer();
-
